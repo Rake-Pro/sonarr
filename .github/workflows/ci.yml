@@ -59,7 +59,6 @@ jobs:
           run 'test -x /usr/bin/catatonit && test -x /entrypoint.sh'
           run 'test -x /app/bin/Sonarr && test ! -e /app/bin/Sonarr.Update'
           run 'grep -q UpdateMethod=docker /app/package_info'
-          run '/app/bin/Sonarr --version 2>/dev/null | head -1 || true'
 
       # Same gate the release applies, so a dev push that would fail the
       # release is red here first.
