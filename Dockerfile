@@ -3,7 +3,7 @@
 # Sonarr v4 on the shared Alpine base, rootless from the first process.
 # Upstream ships a self-contained .NET build (runtime inside the tarball), so
 # the image only adds the native libraries that runtime loads.
-FROM ghcr.io/rake-pro/alpine-base:1.0@sha256:f62113d237739786f9b4419271e4625f509374576b50c8cb8ea4fc882952d168 AS fetch
+FROM ghcr.io/rake-pro/alpine-base:1.0@sha256:73a14e80b779043678834af2c47d6c1c17dc1982733d596fba38bafd1093e5b5 AS fetch
 ARG VERSION="4.0.20.3014"
 ARG BRANCH="main"
 RUN apk add --no-cache curl \
@@ -15,7 +15,7 @@ RUN apk add --no-cache curl \
     && printf 'UpdateMethod=docker\nBranch=%s\nPackageVersion=%s\nPackageAuthor=[Rake-Pro](https://github.com/Rake-Pro)\n' "${BRANCH}" "${VERSION}" > /out/package_info \
     && chmod -R u=rwX,go=rX /out
 
-FROM ghcr.io/rake-pro/alpine-base:1.0@sha256:f62113d237739786f9b4419271e4625f509374576b50c8cb8ea4fc882952d168
+FROM ghcr.io/rake-pro/alpine-base:1.0@sha256:73a14e80b779043678834af2c47d6c1c17dc1982733d596fba38bafd1093e5b5
 ARG VERSION
 LABEL org.opencontainers.image.source="https://github.com/Rake-Pro/sonarr" \
       org.opencontainers.image.version="${VERSION}"
